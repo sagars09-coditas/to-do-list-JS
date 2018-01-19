@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="./To-do-List.js"></script>
+    <style>
+        html, body {
+            background-color: whitesmoke;
+            position: relative;
+            height: 100%;
+        }
+        p {
+            display: inline;
+        }
+        .main {
+            height: inherit;
+            border: 4px solid black;
+            background-color: azure;
+        }
+        .button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .text, .dropdown {
+            display: inline-block;
+        }
+        #form {
+            visibility: collapse;
+        }
+        #appendItem {
+            list-style: none;
+        }
+        .delAnim {
+            position: absolute;
+            animation: del 0.25s 1 linear;
+        }
+        @-webkit-keyframes del {
+            from {left: 140px;}
+            to {left: 250px;}
+        }
+        .addAnim {
+            position: absolute;
+            animation: add 0.25s 1 linear;
+        }
+        @-webkit-keyframes add {
+            from {left: -35px;}
+            to {left: 40px;}
+        }
+        .downAnim {
+            position: relative;
+            animation: down 0.5s 1 linear;
+        }
+        @-webkit-keyframes down {
+            from {top: 0px;}
+            to {top: 40px;}
+        }
+    </style>
+</head>
+<body>
+    <div class="container main">
+        <h1>To-Do List</h1>
+    
+        <button type="button" id="add" onclick="addForm()" class="button"><i class="fa fa-plus-square"></i></button>
+        <select id="sortList" onchange="sort(this.index)" value="this.index">            
+            <option selected="selected" disabled="disabled">---Sort---</option>
+            <option value="complete">Complete</option>
+            <option value="incomplete">Incompete</option>
+            <option value="default">Default</option>
+        </select>
+    
+        <div id="addItem">
+            <form class="form-inline" id="form">
+                <input type="text" id="item" placeholder="Enter your text here" class="form-control text">
+                <button type="button" onclick="addItem()" class="button"><i class="fa fa-arrow-right"></i></button>
+            </form>
+        </div>
+    
+        <div>
+            <ul id="appendItem">
+                
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
